@@ -24,7 +24,10 @@ namespace Extract
 
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            //TODO export here
+            var gameDir = @"C:\Program Files (x86)\Steam\steamapps\common\Outward\Outward_Data";
+            AssetExporter.Export(gameDir, $"{gameDir}\\StreamingAssets\\items", @"C:\Files\Export\OutwardItem",
+                o => o is GameObject go && go.Name == "2000140_PalladiumSword");
+            sw.Stop();
             Logger.Instance.Log(LogType.Debug, LogCategory.Debug, $"Elapsed={Util.FormatTime(sw.Elapsed)}");
         }
     }
